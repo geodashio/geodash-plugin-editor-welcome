@@ -3,7 +3,8 @@ geodash.directives["geodasheditorModalWelcome"] = function(){
     controller: geodash.controllers.controller_modal_geodasheditor_welcome,
     restrict: 'EA',
     replace: true,
-    scope: {},
+    //scope: {},
+    scope: true,
     //scope: {
     //  layer: "=layer"
     //},
@@ -11,10 +12,9 @@ geodash.directives["geodasheditorModalWelcome"] = function(){
     templateUrl: 'modal_welcome_geodasheditor.tpl.html',
     link: function ($scope, $element, attrs)
     {
-
       setTimeout(function(){
         geodash.init.typeahead($element);
-        geodasheditor.welcome();
+        $scope.welcome();  
       }, 10);
 
     }
