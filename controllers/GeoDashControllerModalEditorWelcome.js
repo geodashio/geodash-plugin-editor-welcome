@@ -1,16 +1,16 @@
-geodash.controllers["controller_modal_geodasheditor_welcome"] = function($scope, $element, $controller, $interpolate)
+geodash.controllers.GeoDashControllerModalEditorWelcome = function($scope, $element, $controller, $interpolate)
 {
   angular.extend(this, $controller('GeoDashControllerModal', {$element: $element, $scope: $scope}));
   var m = $.grep(geodash.meta.modals, function(x, i){ return x['name'] == 'geodasheditor_welcome';})[0];
   $scope.config = m.config;
   $scope.ui = m.ui;
   $scope.html5data = geodasheditor.html5data;
-  $scope.updateValue = geodash.api.updateValue;
+  $scope.updateValue = geodash.util.updateValue;
   $scope.showOptions = geodash.ui.showOptions;
 
   $scope.welcome = function()
   {
-    var scope = geodash.api.getScope("geodash-main");
+    var scope = geodash.util.getScope("geodash-main");
     var intentData = {
       "id": "geodash-modal-geodasheditor-welcome",
       "modal": {
@@ -19,7 +19,7 @@ geodash.controllers["controller_modal_geodasheditor_welcome"] = function($scope,
       },
       "dynamic": {},
       "static": {
-        "welcome": extract("welcome", scope.config || scope.map_config)
+        "welcome": extract("welcome", scope.config || scope.dashboard)
       }
     };
     geodash.api.intend("toggleModal", intentData, scope);
@@ -36,7 +36,7 @@ geodash.controllers["controller_modal_geodasheditor_welcome"] = function($scope,
       }
       else
       {
-        geodash.log.error("controller_modal_geodasheditor_welcome", 'Could not find object for page "dashboard".');
+        geodash.log.error("GeoDashControllerModalEditorWelcome", 'Could not find object for page "dashboard".');
         return "#";
       }
     }

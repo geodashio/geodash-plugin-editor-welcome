@@ -1,11 +1,11 @@
 ---
 name: "geodash-plugin-editor-welcome"
 controllers:
-  - GeoDashEditorControllerModalWelcome.js
+  - GeoDashControllerModalEditorWelcome.js
 directives:
   - geodasheditorModalWelcome.js
 templates:
-  - modal_welcome_geodasheditor.tpl.html
+  - modal_editor_welcome.tpl.html
 less:
   - geodasheditor_welcome.less
 modals:
